@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+
+  server1:
+    build:
+      context: ./server1
+      dockerfile: ./Dockerfile
+    volumes:
+      - /users/app/node_modules
+      - ./server1:/users/app
+    restart: always
+
+  server2:
+    build:
+      context: ./server2
+      dockerfile: ./Dockerfile
+    volumes:
+      - /users/app/node_modules
+      - ./server2:/users/app
+    restart: always
+
+  server3:
+    build:
+      context: ./server3
+      dockerfile: ./Dockerfile
+    volumes:
+      - /users/app/node_modules
+      - ./server3:/users/app
+    restart: always
+
+  client:
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    volumes:
+      - /users/app/node_modules
+      - ./client:/users/app
+    restart: always
+
+  proxy:
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile
+    ports:
+      - 5010:80
+    volumes:
+      - ./nginx:/ect/nginx
+    restart: always
