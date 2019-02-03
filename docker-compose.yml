@@ -43,7 +43,7 @@ services:
       context: ./nginx
       dockerfile: ./Dockerfile
     ports:
-      - 5010:80
+      - 5000:80
     volumes:
       - ./nginx:/ect/nginx
     restart: always
